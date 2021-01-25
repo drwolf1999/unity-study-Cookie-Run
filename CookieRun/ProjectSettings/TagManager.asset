@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Obstacle
+  - Heal
+  - Jelly
   layers:
   - Default
   - TransparentFX
