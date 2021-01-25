@@ -30,6 +30,7 @@ public class PlayerInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other);
+        Removeable removeable = other.GetComponent<Removeable>();
         switch(other.tag)
         {
             case "Obstacle":
@@ -44,6 +45,10 @@ public class PlayerInteraction : MonoBehaviour
             case "Platform":
                 playerMovement.ResetJumpStack();
                 break;
+        }
+        if (removeable != null)
+        {
+            removeable.DestroyObject();
         }
     }
 
