@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d157894fb5fdf7749886cacffda2a08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
+  speed: 0.15
   jumpforce: 25
 --- !u!114 &898914804
 MonoBehaviour:
@@ -1239,6 +1239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1219635693}
   - component: {fileID: 1219635694}
+  - component: {fileID: 1219635695}
   m_Layer: 0
   m_Name: Jelly
   m_TagString: Untagged
@@ -1277,6 +1278,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1219635695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219635692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436c206a49fb78d45983bbe76065a3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1576502362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695226672}
   - component: {fileID: 1695226673}
+  - component: {fileID: 1695226674}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
@@ -1438,6 +1452,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1695226674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695226671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436c206a49fb78d45983bbe76065a3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857430972
 GameObject:
   m_ObjectHideFlags: 0
