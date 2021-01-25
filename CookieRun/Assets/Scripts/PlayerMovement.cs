@@ -34,11 +34,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpStack>0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpStack>1)
         {
-            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            rigid.velocity = Vector2.up * jumpforce;
             jumpStack -= 1;
         }
+        else if(Input.GetKeyDown(KeyCode.Space) && jumpStack > 0)
+        {
+            rigid.velocity = Vector2.up * jumpforce;
+            jumpStack -= 1;
+        }
+        
     }
 
     public void ResetJumpStack()
