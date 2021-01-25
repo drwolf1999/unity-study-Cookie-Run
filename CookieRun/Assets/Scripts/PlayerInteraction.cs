@@ -6,6 +6,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     int playerHealth = 1000;
     int score = 0;
+    [SerializeField] PlayerMovement playerMovement;
     private void GetDamage(int damage)
     {
         playerHealth -= damage;
@@ -26,8 +27,9 @@ public class PlayerInteraction : MonoBehaviour
         return score;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other);
         switch(other.tag)
         {
             case "Obstacle":
@@ -38,6 +40,9 @@ public class PlayerInteraction : MonoBehaviour
                 break;
             case "Jelly":
                 AddScore(100);
+                break;
+            case "Platform":
+                playerMovement.ResetJumpStack();
                 break;
         }
     }
