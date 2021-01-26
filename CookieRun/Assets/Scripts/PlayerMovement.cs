@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 PlayerPos;
     private Rigidbody2D rigid;
     private int jumpStack;
+    private Animator animator;
 
     public float speed;
     public float jumpforce;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpStack = 2;
         rigid = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         Jump();
+        Slide();
     }
 
     void Move()
@@ -51,5 +54,18 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpStack = 2;
         Debug.Log(jumpStack);
+    }
+
+    void Slide()
+    {
+        if (Input.GetKey(KeyCode.Z))
+        {
+            animator.SetBool("isSliding", true);
+            Debug.Log(animator.GetBool("isSliding"));
+        }
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            animator.SetBool("isSliding", false);
+        }
     }
 }
