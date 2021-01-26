@@ -7,6 +7,9 @@ public class PlayerInteraction : MonoBehaviour
     int playerHealth = 1000;
     int score = 0;
     [SerializeField] PlayerMovement playerMovement;
+
+    [SerializeField] DeadController deadController;
+
     private void GetDamage(int damage)
     {
         playerHealth -= damage;
@@ -44,6 +47,10 @@ public class PlayerInteraction : MonoBehaviour
                 break;
             case "Platform":
                 playerMovement.ResetJumpStack();
+                break;
+            case "DeadLine":
+                Debug.Log("DEAD!!");
+                deadController.Dead();
                 break;
         }
         if (removeable != null)
