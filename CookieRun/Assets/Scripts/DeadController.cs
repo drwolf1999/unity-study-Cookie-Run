@@ -25,7 +25,7 @@ public class DeadController : MonoBehaviour
 		deadPanel.SetActive(true);
 	}
 
-	public void DeadLineFollow()
+	private void DeadLineFollow()
 	{
 		Vector3 position = deadLine.position;
 		position.x = player.position.x;

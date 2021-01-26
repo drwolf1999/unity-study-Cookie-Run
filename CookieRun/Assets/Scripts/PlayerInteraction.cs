@@ -10,7 +10,14 @@ public class PlayerInteraction : MonoBehaviour
 
     [SerializeField] DeadController deadController;
 
-    private void GetDamage(int damage)
+	private void Update()
+	{
+/*        Debug.Log(playerHealth);*/
+        if (playerHealth <= 0) deadController.Dead();
+        GameObject.Find("Health").GetComponent<UnityEngine.UI.Text>().text = playerHealth.ToString();
+	}
+
+	private void GetDamage(int damage)
     {
         playerHealth -= damage;
     }
@@ -32,11 +39,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
+        Debug.Log(other + "  " + other.tag);
         Removeable removeable = other.GetComponent<Removeable>();
         switch(other.tag)
         {
             case "Obstacle":
+                Debug.Log("!@#!@#");
                 GetDamage(50);
                 break;
             case "Heal":
