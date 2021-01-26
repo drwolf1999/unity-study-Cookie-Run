@@ -17,10 +17,7 @@ public class MapLoader : MonoBehaviour
 
 	[SerializeField] private Transform mapParent;
 
-	/// <summary>
-	/// current stage (default: 1)
-	/// </summary>
-	private int currentStage;
+	private static Vector2 lastMapPosition;
 
 	/// <summary>
 	/// working directory
@@ -31,9 +28,12 @@ public class MapLoader : MonoBehaviour
 
 	void Start()
 	{
-		currentStage = 1;
 		path = System.Environment.CurrentDirectory;
-		LoadMap();
+		lastMapPosition = Vector2.zero;
+		for (int i = 1; i <= 3; i++)
+		{
+			LoadMap(i);
+		}
 	}
 
 	// Update is called once per frame
@@ -42,13 +42,13 @@ public class MapLoader : MonoBehaviour
 
 	}
 
-	private void LoadMap()
+	private void LoadMap(int spawnStage)
 	{
-		Vector2 position = Vector2.zero;
+		Vector2 position = lastMapPosition;
 		float dx = 2f, dy = 2f;
 		for (int mapId = 1; mapId <= 4; mapId++)
 		{
-			string[] mapInfo = ReadMap(mapId);
+			string[] mapInfo = ReadMap(mapId, spawnStage);
 			for (int i = Height - 1; i >= 0; i--)
 			{
 				for (int j = 0; j < Width; j++)
@@ -59,11 +59,12 @@ public class MapLoader : MonoBehaviour
 			}
 			position.x += Width * dx;
 		}
+		lastMapPosition = position;
 	}
 
-	private string[] ReadMap(int mapId)
+	private string[] ReadMap(int mapId, int stage)
 	{
-		string textValue = System.IO.File.ReadAllText(path + "/Assets/Map/stage" + currentStage + "/" + mapId + ".txt");
+		string textValue = System.IO.File.ReadAllText(path + "/Assets/Map/stage" + stage + "/" + mapId + ".txt");
 		return textValue.Split('\n');
 	}
 }
